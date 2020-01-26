@@ -1,0 +1,6 @@
+creds.json
+queryData.py
+mail_sender.py
+venv/*
+__pycache__/*
+.vscode/*
