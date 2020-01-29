@@ -48,7 +48,7 @@ class GoToSubscriberPage(object):
         driver = self.driver
         with open('creds.json') as f:
             data = json.load(f)
-        driver.get(('https://biz.partner.co.il/he-il/biz/international/Going-abroad/'))
+        driver.get(('WEBSITE_URL'))
 
         try:
             driver.find_element_by_xpath('//*[@id="USER"]').send_keys(data['userName'])
