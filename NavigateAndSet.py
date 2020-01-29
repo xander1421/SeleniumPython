@@ -48,13 +48,9 @@ class GoToSubscriberPage(object):
         driver = self.driver
         with open('creds.json') as f:
             data = json.load(f)
-        # # LOGIN INFORMATION FOR PARTNER PAGE
-        # username = 'e1234567'
-        # password = 'Gilat123!'
         driver.get(('https://biz.partner.co.il/he-il/biz/international/Going-abroad/'))
-        # Fill in username
-        try:
 
+        try:
             driver.find_element_by_xpath('//*[@id="USER"]').send_keys(data['userName'])
             # Fil the password
             driver.find_element_by_xpath('//*[@id="PASSWORD"]').click()
@@ -85,14 +81,6 @@ class GoToSubscriberPage(object):
             ("were good")
         WebDriverWait(driver, delay).until(EC.element_to_be_clickable((By.ID, 'ContentBody_FindContractCtrl1_Input'))).click()
         driver.find_element_by_id("ContentBody_FindContractCtrl1_Input").clear()
-
-        # type users mobile nr in the text field one number at the time
-        
-        # Eran    Prigat 2019-09-17 23:25:00 2019-09-24 10:10:00       United States   972 50 6844918  <- this is a user whose not in partner
-        # Dor    Snapir 2019-09-17 23:25:00 2019-09-20 23:05:00       United States   972 55 8862756
-        # Tamir     Yakov 2019-09-17 23:25:00 2019-09-24 19:05:00       United States   972 52 8398310
-        # Elad   Meushar 2019-09-17 23:25:00 2019-09-23 10:10:00       United States    972 54 4990012 <- United states needs to be changed to USA || United states not found in Partner
-        # Tamir    Ozdoba 2019-09-17 14:15:00 2019-09-25 15:40:00  Cameroon   972 54 2571020 <- Cameroon doesnt have data packages in partner
         
         i = 0
         phone_number = list(self.phone_number)
@@ -358,10 +346,7 @@ class GoToSubscriberPage(object):
         WebDriverWait(driver, delay)
         driver.find_element_by_id('txtCountries').send_keys(Keys.ENTER)
         WebDriverWait(driver, delay)
-        WebDriverWait(driver, delay)
-        WebDriverWait(driver, delay)
-        print('country set: '+ self.country_of_visit)
-        
+        print('country set: '+ self.country_of_visit) 
         #clicks the show more packages button
         try:
             time.sleep(5) #wait for 5 seconds
@@ -470,8 +455,8 @@ class GoToSubscriberPage(object):
 
 # if __name__ == "__main__":
 
-# #                     #phoneNUmber(523332891), country(name), typeofpackage(1or3), forWhen(1or2), date(number), month(number), days_away(number)
-#     foo = GoToSubscriberPage('544350597','france', 3, 1 ,'31','12', 26)  # 544252291 #54 5607067                                                                                                    #549222280   USER WITH 2 active packages
+#phoneNUmber(123456789), country(name), typeofpackage(1or3), forWhen(1or2), date(number), month(number), days_away(number)
+#     foo = GoToSubscriberPage('phoneNUmber','country', 3, 1 ,'31','12', 26)                                                                                                  #549222280   USER WITH 2 active packages
 
 #     ###############################
 #     foo.setUp()
@@ -488,16 +473,4 @@ class GoToSubscriberPage(object):
 #     # foo.chose_type_3GB()
 #     foo.chose_package_to_set()
 #     foo.for_future_date()
-# # ##################################                          
-#     foo2 = GoToSubscriberPage('523695945',"spain",'3','2','7')
-# ###################################
-#     foo2.setUp()
-#     foo2.go_to_subscriber_page()
-#     foo2.input_number() 
-#     foo2.check_for_future()
-#     foo2.nopackages()
-#     foo2.check_active1()
-#     foo2.check_active2()
-#     foo2.chose_country()
-#     foo2.chose_type_3GB()
-#     foo2.for_future_date()
+# # ################################## 
