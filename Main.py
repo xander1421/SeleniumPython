@@ -33,7 +33,7 @@ class Type_to_set(object):
             funct.configure_packages()
 ###############################
         elif self.private_or_business == 0:
-            phone_number = input("Type the phone number EX: 526618336 : ")
+            phone_number = input("Type the phone number EX: 123456789 : ")
             country_name = input("Type the country name: ")
             GB1_or_GB3 = int(input("Type 1 for 1GB package and 3 for 3Gb package: "))
             today1_future2 = int(input("Type 1 for the package to start now or 2 to make it start at a future date: "))
