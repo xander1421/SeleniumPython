@@ -114,7 +114,7 @@ class GoToSubscriberPage(object):
 
             email_body = '''Unfortunately, we can't activate the data package for your trip because your number isn't covered by the Partner.
  For this trip you will need to manage the package by yourself (talk with a cellular company and arrange a package) – and you will get a refund for up to 350 NIS maximum..'''
-            email = email_usage('helpdesk@gilat.com', 'Number: ' + str1 + ' not in partner', email_body)    
+            email = email_usage('helpdesk@EMAIL.COM', 'Number: ' + str1 + ' not in partner', email_body)    
             #email.send_email()
               
             exit()
@@ -141,7 +141,7 @@ class GoToSubscriberPage(object):
 
                     listToStr = ' '.join([str(elem) for elem in self.phone_number]).replace(' ', '')
 
-                    send_email_if_package_already_activated = email_usage('helpdesk@gilat.com', 'No need to activate a new 3GB data package', 'There is no need to activate a new package for the user: ' + listToStr + '. It has already been set to activation and it will start on ' + self.day + '/' + self.month)
+                    send_email_if_package_already_activated = email_usage('helpdesk@EMAIL.COM', 'No need to activate a new 3GB data package', 'There is no need to activate a new package for the user: ' + listToStr + '. It has already been set to activation and it will start on ' + self.day + '/' + self.month)
                     #send_email_if_package_already_activated.send_email()
                     exit()
                                
@@ -355,7 +355,7 @@ class GoToSubscriberPage(object):
         except NoSuchElementException:
             print("THIS COUNTRY DOESNT HAVE DATA PACKAGES")
                 #sending test email helpdesk
-            email = email_usage('helpdesk@gilat.com', 'This country: ' + self.country_of_visit + ' doesnt have data packages, inform the user', '_test_NO_DATA_PACKAGE_FOR_THIS_COUNTRY')    
+            email = email_usage('helpdesk@EMAIL.COM', 'This country: ' + self.country_of_visit + ' doesnt have data packages, inform the user', '_test_NO_DATA_PACKAGE_FOR_THIS_COUNTRY')    
             #email.send_email()
             exit()
 
@@ -377,7 +377,7 @@ class GoToSubscriberPage(object):
                 print("Need to send him email to get a package by himself")
                 
                 #sending test email to helpdesk
-                email = email_usage('helpdesk@gilat.com', 'Cant set any more 3GB packages, send email to partner for them ' + self.phone_number + ' to set it manually', '_test_')    
+                email = email_usage('helpdesk@EMAIL.COM', 'Cant set any more 3GB packages, send email to partner for them ' + self.phone_number + ' to set it manually', '_test_')    
                 #email.send_email()
 
                 exit()
@@ -455,8 +455,8 @@ class GoToSubscriberPage(object):
 
 # if __name__ == "__main__":
 
-#phoneNUmber(123456789), country(name), typeofpackage(1or3), forWhen(1or2), date(number), month(number), days_away(number)
-#     foo = GoToSubscriberPage('phoneNUmber','country', 3, 1 ,'31','12', 26)                                                                                                  #549222280   USER WITH 2 active packages
+#           phoneNUmber(123456789), country(name), typeofpackage(1or3), forWhen(1or2), date(number), month(number), days_away(number)
+#     foo = GoToSubscriberPage('phoneNumber','country', 3, 1 ,'31','12', 26)                                                                                                  #549222280   USER WITH 2 active packages
 
 #     ###############################
 #     foo.setUp()
