@@ -57,7 +57,7 @@ class GoToSubscriberPage(object):
             driver.find_element_by_xpath('//*[@id="PASSWORD"]').send_keys(data['password'])
             # Click loginBTN
             driver.find_element_by_id('LoginBtn').click() # wait for elements to load
-            #driver.get(('https://biz.partner.co.il/he-il/biz/international/Going-abroad/')) #Goto package page
+            #driver.get(('https://somewebpage.com/')) #Goto package page
 
             print("We are logged in")
         except NoSuchElementException:
@@ -71,30 +71,23 @@ class GoToSubscriberPage(object):
     #//DONE   
     def input_number(self):
         driver = self.driver
-        
         # Located the field where you input the Users phone number
         WebDriverWait(driver, delay).until(EC.presence_of_element_located((By.ID, 'ContentBody_FindContractCtrl1_Input')))
         if TimeoutException:
-            print("were out of time, could not fing the number input field")
-            
+            print("were out of time, could not fing the number input field")  
         else:
             ("were good")
         WebDriverWait(driver, delay).until(EC.element_to_be_clickable((By.ID, 'ContentBody_FindContractCtrl1_Input'))).click()
         driver.find_element_by_id("ContentBody_FindContractCtrl1_Input").clear()
-        
         i = 0
         phone_number = list(self.phone_number)
         while i < 9:
             driver.find_element_by_id("ContentBody_FindContractCtrl1_Input").send_keys(phone_number[i])
             driver.find_element_by_id("ContentBody_FindContractCtrl1_Input").click()
-            
             i += 1
         WebDriverWait(driver, 4)
-
         try:
             users_number = driver.find_element_by_class_name('number')
-            
-            
             if users_number.is_enabled():
                 WebDriverWait(driver, 2)
                 print('i used this')
@@ -115,14 +108,12 @@ class GoToSubscriberPage(object):
             email_body = '''Unfortunately, we can't activate the data package for your trip because your number isn't covered by the Partner.
  For this trip you will need to manage the package by yourself (talk with a cellular company and arrange a package) – and you will get a refund for up to 350 NIS maximum..'''
             email = email_usage('helpdesk@EMAIL.COM', 'Number: ' + str1 + ' not in partner', email_body)    
-            #email.send_email()
-              
+            #email.send_email() 
             exit()
-
+            
 #USED##### Checks if a package has been set for a recent date
     #//DONE
     def check_for_future(self):
-        
         driver = self.driver
         try:
             elem = driver.find_element_by_xpath('/html/body/form[1]/div[2]/div[2]/div[2]/section/section/div[3]/table/tbody/tr[2]/td[3]/a')
@@ -134,17 +125,12 @@ class GoToSubscriberPage(object):
                 self.date_set = driver.find_element_by_css_selector('.internationalPackagesFUview > td:nth-child(2)').get_attribute('innerHTML') #get date of package
                 print("The type of package that was set is: " + self.type_set_for_future)
                 print("The date that the package will start is: " + self.date_set)
-
-
                 if str(self.type_of_package) in self.type_set_for_future:
                     print("No need to activate a new package for the user, it has already been set for future activation")
-
                     listToStr = ' '.join([str(elem) for elem in self.phone_number]).replace(' ', '')
-
                     send_email_if_package_already_activated = email_usage('helpdesk@EMAIL.COM', 'No need to activate a new 3GB data package', 'There is no need to activate a new package for the user: ' + listToStr + '. It has already been set to activation and it will start on ' + self.day + '/' + self.month)
                     #send_email_if_package_already_activated.send_email()
-                    exit()
-                               
+                    exit()                
         except NoSuchElementException:
                 print("This user has no  package set for future activation")
 
