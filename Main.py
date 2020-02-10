@@ -1,10 +1,6 @@
 from queryData import *  
 
 
-
-
-
-
 class Type_to_set(object):
     def __init__(self, private_or_business):
         self.private_or_business = private_or_business
@@ -14,8 +10,6 @@ class Type_to_set(object):
         return cls(
             int(input('Type 0 for Private or 1 for Business: ')),
         )
-
-
     def run_from_TAS_or_manual_input(self): #uses TAS to extract data and to create the package
 ###############################        
         if self.private_or_business == 1:
@@ -73,8 +67,8 @@ class Type_to_set(object):
                 foo.chose_package_to_set()
                 foo.for_future_date()
 
-
-
+###############################                
+                
 if __name__ == "__main__":
 
 
