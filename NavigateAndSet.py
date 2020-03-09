@@ -442,7 +442,7 @@ class GoToSubscriberPage(object):
 # if __name__ == "__main__":
 
 #           phoneNUmber(123456789), country(name), typeofpackage(1or3), forWhen(1or2), date(number), month(number), days_away(number)
-#     foo = GoToSubscriberPage('phoneNumber','country', 3, 1 ,'31','12', 26)                                                                                                  #549222280   USER WITH 2 active packages
+#     foo = GoToSubscriberPage('phoneNumber','country', 3, 1 ,'31','12', 26)                                                         
 
 #     ###############################
 #     foo.setUp()
